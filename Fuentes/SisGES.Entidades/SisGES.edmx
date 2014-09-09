@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SisGENModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="FAM_Familias">
+          <Key>
+            <PropertyRef Name="IdFamilia" />
+          </Key>
+          <Property Name="IdFamilia" Type="int" Nullable="false" />
+          <Property Name="Folio" Type="int" Nullable="false" />
+          <Property Name="RUTUsuario" Type="int" Nullable="false" />
+          <Property Name="NombreFamilia" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar(max)" Nullable="false" />
+          <Property Name="ReferenciaDir" Type="varchar(max)" />
+          <Property Name="Telefono1" Type="int" Nullable="false" />
+          <Property Name="Telefono2" Type="int" />
+          <Property Name="IdGestorFamiliar" Type="int" Nullable="false" />
+          <Property Name="EstadoApoLaboral" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAM_IntegrantesFamilia">
+          <Key>
+            <PropertyRef Name="IdFamilia" />
+          </Key>
+          <Property Name="IdFamilia" Type="int" Nullable="false" />
+          <Property Name="RUT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_EstadoCivil">
+          <Key>
+            <PropertyRef Name="IdEstadoCivil" />
+          </Key>
+          <Property Name="IdEstadoCivil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstadoCivil" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GEN_GestoresFamiliares">
+          <Key>
+            <PropertyRef Name="IdGestorFamiliar" />
+          </Key>
+          <Property Name="IdGestorFamiliar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ApPaterno" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ApMaterno" Type="varchar" MaxLength="30" />
+          <Property Name="Telefono" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GEN_Parentescos">
+          <Key>
+            <PropertyRef Name="IdParentesco" />
+          </Key>
+          <Property Name="IdParentesco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Parentesco" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GEN_Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GEN_Usuarios">
+          <Key>
+            <PropertyRef Name="RUT" />
+          </Key>
+          <Property Name="RUT" Type="int" Nullable="false" />
+          <Property Name="DV" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ApPaterno" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ApMaterno" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Fono" Type="int" />
+          <Property Name="Celular" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Imagen" Type="varchar(max)" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="Clave" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="INT_Integrantes">
+          <Key>
+            <PropertyRef Name="RUT" />
+          </Key>
+          <Property Name="RUT" Type="int" Nullable="false" />
+          <Property Name="DV" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Nombres" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ApPaterno" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="ApMaterno" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdParentesco" Type="int" Nullable="false" />
+          <Property Name="Sexo" Type="bit" Nullable="false" />
+          <Property Name="FechaNac" Type="date" Nullable="false" />
+          <Property Name="IdEstadoCivil" Type="int" Nullable="false" />
+          <Property Name="IdNivelEscolar" Type="int" Nullable="false" />
+          <Property Name="IdOcupacion" Type="int" Nullable="false" />
+          <Property Name="DescOcupacion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="INT_NivelesEscolaridad">
+          <Key>
+            <PropertyRef Name="IdNivelEscolar" />
+          </Key>
+          <Property Name="IdNivelEscolar" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NivelEscolar" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="INT_Ocupaciones">
+          <Key>
+            <PropertyRef Name="IdOcupacion" />
+          </Key>
+          <Property Name="IdOcupacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ocupacion" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_FAM_FAMI_REFERENCE_GEN_GEST">
+          <End Role="GEN_GestoresFamiliares" Type="Self.GEN_GestoresFamiliares" Multiplicity="1" />
+          <End Role="FAM_Familias" Type="Self.FAM_Familias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_GestoresFamiliares">
+              <PropertyRef Name="IdGestorFamiliar" />
+            </Principal>
+            <Dependent Role="FAM_Familias">
+              <PropertyRef Name="IdGestorFamiliar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FAM_FAMI_REFERENCE_GEN_USUA">
+          <End Role="GEN_Usuarios" Type="Self.GEN_Usuarios" Multiplicity="1" />
+          <End Role="FAM_Familias" Type="Self.FAM_Familias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Usuarios">
+              <PropertyRef Name="RUT" />
+            </Principal>
+            <Dependent Role="FAM_Familias">
+              <PropertyRef Name="RUTUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FAM_INTE_REFERENCE_FAM_FAMI">
+          <End Role="FAM_Familias" Type="Self.FAM_Familias" Multiplicity="1" />
+          <End Role="FAM_IntegrantesFamilia" Type="Self.FAM_IntegrantesFamilia" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="FAM_Familias">
+              <PropertyRef Name="IdFamilia" />
+            </Principal>
+            <Dependent Role="FAM_IntegrantesFamilia">
+              <PropertyRef Name="IdFamilia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FAM_INTE_REFERENCE_INT_INTE">
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="1" />
+          <End Role="FAM_IntegrantesFamilia" Type="Self.FAM_IntegrantesFamilia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INT_Integrantes">
+              <PropertyRef Name="RUT" />
+            </Principal>
+            <Dependent Role="FAM_IntegrantesFamilia">
+              <PropertyRef Name="RUT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GEN_USUA_REFERENCE_GEN_ROL">
+          <End Role="GEN_Rol" Type="Self.GEN_Rol" Multiplicity="1" />
+          <End Role="GEN_Usuarios" Type="Self.GEN_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="GEN_Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_GEN_ESTA">
+          <End Role="GEN_EstadoCivil" Type="Self.GEN_EstadoCivil" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_EstadoCivil">
+              <PropertyRef Name="IdEstadoCivil" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdEstadoCivil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_GEN_PARE">
+          <End Role="GEN_Parentescos" Type="Self.GEN_Parentescos" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Parentescos">
+              <PropertyRef Name="IdParentesco" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdParentesco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_INT_NIVE">
+          <End Role="INT_NivelesEscolaridad" Type="Self.INT_NivelesEscolaridad" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INT_NivelesEscolaridad">
+              <PropertyRef Name="IdNivelEscolar" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdNivelEscolar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_INT_OCUP">
+          <End Role="INT_Ocupaciones" Type="Self.INT_Ocupaciones" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INT_Ocupaciones">
+              <PropertyRef Name="IdOcupacion" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdOcupacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SisGENModelStoreContainer">
+          <EntitySet Name="FAM_Familias" EntityType="Self.FAM_Familias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAM_IntegrantesFamilia" EntityType="Self.FAM_IntegrantesFamilia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_EstadoCivil" EntityType="Self.GEN_EstadoCivil" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_GestoresFamiliares" EntityType="Self.GEN_GestoresFamiliares" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_Parentescos" EntityType="Self.GEN_Parentescos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_Rol" EntityType="Self.GEN_Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GEN_Usuarios" EntityType="Self.GEN_Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INT_Integrantes" EntityType="Self.INT_Integrantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INT_NivelesEscolaridad" EntityType="Self.INT_NivelesEscolaridad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INT_Ocupaciones" EntityType="Self.INT_Ocupaciones" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FAM_FAMI_REFERENCE_GEN_GEST" Association="Self.FK_FAM_FAMI_REFERENCE_GEN_GEST">
+            <End Role="GEN_GestoresFamiliares" EntitySet="GEN_GestoresFamiliares" />
+            <End Role="FAM_Familias" EntitySet="FAM_Familias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FAM_FAMI_REFERENCE_GEN_USUA" Association="Self.FK_FAM_FAMI_REFERENCE_GEN_USUA">
+            <End Role="GEN_Usuarios" EntitySet="GEN_Usuarios" />
+            <End Role="FAM_Familias" EntitySet="FAM_Familias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FAM_INTE_REFERENCE_FAM_FAMI" Association="Self.FK_FAM_INTE_REFERENCE_FAM_FAMI">
+            <End Role="FAM_Familias" EntitySet="FAM_Familias" />
+            <End Role="FAM_IntegrantesFamilia" EntitySet="FAM_IntegrantesFamilia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FAM_INTE_REFERENCE_INT_INTE" Association="Self.FK_FAM_INTE_REFERENCE_INT_INTE">
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+            <End Role="FAM_IntegrantesFamilia" EntitySet="FAM_IntegrantesFamilia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GEN_USUA_REFERENCE_GEN_ROL" Association="Self.FK_GEN_USUA_REFERENCE_GEN_ROL">
+            <End Role="GEN_Rol" EntitySet="GEN_Rol" />
+            <End Role="GEN_Usuarios" EntitySet="GEN_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_GEN_ESTA" Association="Self.FK_INT_INTE_REFERENCE_GEN_ESTA">
+            <End Role="GEN_EstadoCivil" EntitySet="GEN_EstadoCivil" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_GEN_PARE" Association="Self.FK_INT_INTE_REFERENCE_GEN_PARE">
+            <End Role="GEN_Parentescos" EntitySet="GEN_Parentescos" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_INT_NIVE" Association="Self.FK_INT_INTE_REFERENCE_INT_NIVE">
+            <End Role="INT_NivelesEscolaridad" EntitySet="INT_NivelesEscolaridad" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_INT_OCUP" Association="Self.FK_INT_INTE_REFERENCE_INT_OCUP">
+            <End Role="INT_Ocupaciones" EntitySet="INT_Ocupaciones" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SisGENModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="FAM_Familias">
+          <Key>
+            <PropertyRef Name="IdFamilia" />
+          </Key>
+          <Property Name="IdFamilia" Type="Int32" Nullable="false" />
+          <Property Name="Folio" Type="Int32" Nullable="false" />
+          <Property Name="RUTUsuario" Type="Int32" Nullable="false" />
+          <Property Name="NombreFamilia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReferenciaDir" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono1" Type="Int32" Nullable="false" />
+          <Property Name="Telefono2" Type="Int32" />
+          <Property Name="IdGestorFamiliar" Type="Int32" Nullable="false" />
+          <Property Name="EstadoApoLaboral" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GEN_GestoresFamiliares" Relationship="Self.FK_FAM_FAMI_REFERENCE_GEN_GEST" FromRole="FAM_Familias" ToRole="GEN_GestoresFamiliares" />
+          <NavigationProperty Name="GEN_Usuarios" Relationship="Self.FK_FAM_FAMI_REFERENCE_GEN_USUA" FromRole="FAM_Familias" ToRole="GEN_Usuarios" />
+          <NavigationProperty Name="INT_Integrantes" Relationship="Self.FAM_IntegrantesFamilia" FromRole="FAM_Familias" ToRole="INT_Integrantes" />
+        </EntityType>
+        <EntityType Name="GEN_EstadoCivil">
+          <Key>
+            <PropertyRef Name="IdEstadoCivil" />
+          </Key>
+          <Property Name="IdEstadoCivil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INT_Integrantes" Relationship="Self.FK_INT_INTE_REFERENCE_GEN_ESTA" FromRole="GEN_EstadoCivil" ToRole="INT_Integrantes" />
+        </EntityType>
+        <EntityType Name="GEN_GestoresFamiliares">
+          <Key>
+            <PropertyRef Name="IdGestorFamiliar" />
+          </Key>
+          <Property Name="IdGestorFamiliar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApPaterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApMaterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="FAM_Familias" Relationship="Self.FK_FAM_FAMI_REFERENCE_GEN_GEST" FromRole="GEN_GestoresFamiliares" ToRole="FAM_Familias" />
+        </EntityType>
+        <EntityType Name="GEN_Parentescos">
+          <Key>
+            <PropertyRef Name="IdParentesco" />
+          </Key>
+          <Property Name="IdParentesco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parentesco" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INT_Integrantes" Relationship="Self.FK_INT_INTE_REFERENCE_GEN_PARE" FromRole="GEN_Parentescos" ToRole="INT_Integrantes" />
+        </EntityType>
+        <EntityType Name="GEN_Rol">
+          <Key>
+            <PropertyRef Name="IdRol" />
+          </Key>
+          <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GEN_Usuarios" Relationship="Self.FK_GEN_USUA_REFERENCE_GEN_ROL" FromRole="GEN_Rol" ToRole="GEN_Usuarios" />
+        </EntityType>
+        <EntityType Name="GEN_Usuarios">
+          <Key>
+            <PropertyRef Name="RUT" />
+          </Key>
+          <Property Name="RUT" Type="Int32" Nullable="false" />
+          <Property Name="DV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApPaterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApMaterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fono" Type="Int32" />
+          <Property Name="Celular" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FAM_Familias" Relationship="Self.FK_FAM_FAMI_REFERENCE_GEN_USUA" FromRole="GEN_Usuarios" ToRole="FAM_Familias" />
+          <NavigationProperty Name="GEN_Rol" Relationship="Self.FK_GEN_USUA_REFERENCE_GEN_ROL" FromRole="GEN_Usuarios" ToRole="GEN_Rol" />
+        </EntityType>
+        <EntityType Name="INT_Integrantes">
+          <Key>
+            <PropertyRef Name="RUT" />
+          </Key>
+          <Property Name="RUT" Type="Int32" Nullable="false" />
+          <Property Name="DV" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Nombres" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApPaterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ApMaterno" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IdParentesco" Type="Int32" Nullable="false" />
+          <Property Name="Sexo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaNac" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IdEstadoCivil" Type="Int32" Nullable="false" />
+          <Property Name="IdNivelEscolar" Type="Int32" Nullable="false" />
+          <Property Name="IdOcupacion" Type="Int32" Nullable="false" />
+          <Property Name="DescOcupacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GEN_EstadoCivil" Relationship="Self.FK_INT_INTE_REFERENCE_GEN_ESTA" FromRole="INT_Integrantes" ToRole="GEN_EstadoCivil" />
+          <NavigationProperty Name="GEN_Parentescos" Relationship="Self.FK_INT_INTE_REFERENCE_GEN_PARE" FromRole="INT_Integrantes" ToRole="GEN_Parentescos" />
+          <NavigationProperty Name="INT_NivelesEscolaridad" Relationship="Self.FK_INT_INTE_REFERENCE_INT_NIVE" FromRole="INT_Integrantes" ToRole="INT_NivelesEscolaridad" />
+          <NavigationProperty Name="INT_Ocupaciones" Relationship="Self.FK_INT_INTE_REFERENCE_INT_OCUP" FromRole="INT_Integrantes" ToRole="INT_Ocupaciones" />
+          <NavigationProperty Name="FAM_Familias" Relationship="Self.FAM_IntegrantesFamilia" FromRole="INT_Integrantes" ToRole="FAM_Familias" />
+        </EntityType>
+        <EntityType Name="INT_NivelesEscolaridad">
+          <Key>
+            <PropertyRef Name="IdNivelEscolar" />
+          </Key>
+          <Property Name="IdNivelEscolar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NivelEscolar" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INT_Integrantes" Relationship="Self.FK_INT_INTE_REFERENCE_INT_NIVE" FromRole="INT_NivelesEscolaridad" ToRole="INT_Integrantes" />
+        </EntityType>
+        <EntityType Name="INT_Ocupaciones">
+          <Key>
+            <PropertyRef Name="IdOcupacion" />
+          </Key>
+          <Property Name="IdOcupacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ocupacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INT_Integrantes" Relationship="Self.FK_INT_INTE_REFERENCE_INT_OCUP" FromRole="INT_Ocupaciones" ToRole="INT_Integrantes" />
+        </EntityType>
+        <Association Name="FK_FAM_FAMI_REFERENCE_GEN_GEST">
+          <End Role="GEN_GestoresFamiliares" Type="Self.GEN_GestoresFamiliares" Multiplicity="1" />
+          <End Role="FAM_Familias" Type="Self.FAM_Familias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_GestoresFamiliares">
+              <PropertyRef Name="IdGestorFamiliar" />
+            </Principal>
+            <Dependent Role="FAM_Familias">
+              <PropertyRef Name="IdGestorFamiliar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FAM_FAMI_REFERENCE_GEN_USUA">
+          <End Role="GEN_Usuarios" Type="Self.GEN_Usuarios" Multiplicity="1" />
+          <End Role="FAM_Familias" Type="Self.FAM_Familias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Usuarios">
+              <PropertyRef Name="RUT" />
+            </Principal>
+            <Dependent Role="FAM_Familias">
+              <PropertyRef Name="RUTUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_GEN_ESTA">
+          <End Role="GEN_EstadoCivil" Type="Self.GEN_EstadoCivil" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_EstadoCivil">
+              <PropertyRef Name="IdEstadoCivil" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdEstadoCivil" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_GEN_PARE">
+          <End Role="GEN_Parentescos" Type="Self.GEN_Parentescos" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Parentescos">
+              <PropertyRef Name="IdParentesco" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdParentesco" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GEN_USUA_REFERENCE_GEN_ROL">
+          <End Role="GEN_Rol" Type="Self.GEN_Rol" Multiplicity="1" />
+          <End Role="GEN_Usuarios" Type="Self.GEN_Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GEN_Rol">
+              <PropertyRef Name="IdRol" />
+            </Principal>
+            <Dependent Role="GEN_Usuarios">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_INT_NIVE">
+          <End Role="INT_NivelesEscolaridad" Type="Self.INT_NivelesEscolaridad" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INT_NivelesEscolaridad">
+              <PropertyRef Name="IdNivelEscolar" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdNivelEscolar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INT_INTE_REFERENCE_INT_OCUP">
+          <End Role="INT_Ocupaciones" Type="Self.INT_Ocupaciones" Multiplicity="1" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INT_Ocupaciones">
+              <PropertyRef Name="IdOcupacion" />
+            </Principal>
+            <Dependent Role="INT_Integrantes">
+              <PropertyRef Name="IdOcupacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FAM_IntegrantesFamilia">
+          <End Role="FAM_Familias" Type="Self.FAM_Familias" Multiplicity="*" />
+          <End Role="INT_Integrantes" Type="Self.INT_Integrantes" Multiplicity="0..1" />
+        </Association>
+        <EntityContainer Name="SisGENEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FAM_Familias" EntityType="Self.FAM_Familias" />
+          <EntitySet Name="GEN_EstadoCivil" EntityType="Self.GEN_EstadoCivil" />
+          <EntitySet Name="GEN_GestoresFamiliares" EntityType="Self.GEN_GestoresFamiliares" />
+          <EntitySet Name="GEN_Parentescos" EntityType="Self.GEN_Parentescos" />
+          <EntitySet Name="GEN_Rol" EntityType="Self.GEN_Rol" />
+          <EntitySet Name="GEN_Usuarios" EntityType="Self.GEN_Usuarios" />
+          <EntitySet Name="INT_Integrantes" EntityType="Self.INT_Integrantes" />
+          <EntitySet Name="INT_NivelesEscolaridad" EntityType="Self.INT_NivelesEscolaridad" />
+          <EntitySet Name="INT_Ocupaciones" EntityType="Self.INT_Ocupaciones" />
+          <AssociationSet Name="FK_FAM_FAMI_REFERENCE_GEN_GEST" Association="Self.FK_FAM_FAMI_REFERENCE_GEN_GEST">
+            <End Role="GEN_GestoresFamiliares" EntitySet="GEN_GestoresFamiliares" />
+            <End Role="FAM_Familias" EntitySet="FAM_Familias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FAM_FAMI_REFERENCE_GEN_USUA" Association="Self.FK_FAM_FAMI_REFERENCE_GEN_USUA">
+            <End Role="GEN_Usuarios" EntitySet="GEN_Usuarios" />
+            <End Role="FAM_Familias" EntitySet="FAM_Familias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_GEN_ESTA" Association="Self.FK_INT_INTE_REFERENCE_GEN_ESTA">
+            <End Role="GEN_EstadoCivil" EntitySet="GEN_EstadoCivil" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_GEN_PARE" Association="Self.FK_INT_INTE_REFERENCE_GEN_PARE">
+            <End Role="GEN_Parentescos" EntitySet="GEN_Parentescos" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GEN_USUA_REFERENCE_GEN_ROL" Association="Self.FK_GEN_USUA_REFERENCE_GEN_ROL">
+            <End Role="GEN_Rol" EntitySet="GEN_Rol" />
+            <End Role="GEN_Usuarios" EntitySet="GEN_Usuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_INT_NIVE" Association="Self.FK_INT_INTE_REFERENCE_INT_NIVE">
+            <End Role="INT_NivelesEscolaridad" EntitySet="INT_NivelesEscolaridad" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INT_INTE_REFERENCE_INT_OCUP" Association="Self.FK_INT_INTE_REFERENCE_INT_OCUP">
+            <End Role="INT_Ocupaciones" EntitySet="INT_Ocupaciones" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+          <AssociationSet Name="FAM_IntegrantesFamilia" Association="Self.FAM_IntegrantesFamilia">
+            <End Role="FAM_Familias" EntitySet="FAM_Familias" />
+            <End Role="INT_Integrantes" EntitySet="INT_Integrantes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SisGENModelStoreContainer" CdmEntityContainer="SisGENEntities">
+          <EntitySetMapping Name="FAM_Familias">
+            <EntityTypeMapping TypeName="SisGENModel.FAM_Familias">
+              <MappingFragment StoreEntitySet="FAM_Familias">
+                <ScalarProperty Name="IdFamilia" ColumnName="IdFamilia" />
+                <ScalarProperty Name="Folio" ColumnName="Folio" />
+                <ScalarProperty Name="RUTUsuario" ColumnName="RUTUsuario" />
+                <ScalarProperty Name="NombreFamilia" ColumnName="NombreFamilia" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="ReferenciaDir" ColumnName="ReferenciaDir" />
+                <ScalarProperty Name="Telefono1" ColumnName="Telefono1" />
+                <ScalarProperty Name="Telefono2" ColumnName="Telefono2" />
+                <ScalarProperty Name="IdGestorFamiliar" ColumnName="IdGestorFamiliar" />
+                <ScalarProperty Name="EstadoApoLaboral" ColumnName="EstadoApoLaboral" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_EstadoCivil">
+            <EntityTypeMapping TypeName="SisGENModel.GEN_EstadoCivil">
+              <MappingFragment StoreEntitySet="GEN_EstadoCivil">
+                <ScalarProperty Name="IdEstadoCivil" ColumnName="IdEstadoCivil" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_GestoresFamiliares">
+            <EntityTypeMapping TypeName="SisGENModel.GEN_GestoresFamiliares">
+              <MappingFragment StoreEntitySet="GEN_GestoresFamiliares">
+                <ScalarProperty Name="IdGestorFamiliar" ColumnName="IdGestorFamiliar" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Parentescos">
+            <EntityTypeMapping TypeName="SisGENModel.GEN_Parentescos">
+              <MappingFragment StoreEntitySet="GEN_Parentescos">
+                <ScalarProperty Name="IdParentesco" ColumnName="IdParentesco" />
+                <ScalarProperty Name="Parentesco" ColumnName="Parentesco" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Rol">
+            <EntityTypeMapping TypeName="SisGENModel.GEN_Rol">
+              <MappingFragment StoreEntitySet="GEN_Rol">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GEN_Usuarios">
+            <EntityTypeMapping TypeName="SisGENModel.GEN_Usuarios">
+              <MappingFragment StoreEntitySet="GEN_Usuarios">
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="DV" ColumnName="DV" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INT_Integrantes">
+            <EntityTypeMapping TypeName="SisGENModel.INT_Integrantes">
+              <MappingFragment StoreEntitySet="INT_Integrantes">
+                <ScalarProperty Name="RUT" ColumnName="RUT" />
+                <ScalarProperty Name="DV" ColumnName="DV" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
+                <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
+                <ScalarProperty Name="IdParentesco" ColumnName="IdParentesco" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+                <ScalarProperty Name="IdEstadoCivil" ColumnName="IdEstadoCivil" />
+                <ScalarProperty Name="IdNivelEscolar" ColumnName="IdNivelEscolar" />
+                <ScalarProperty Name="IdOcupacion" ColumnName="IdOcupacion" />
+                <ScalarProperty Name="DescOcupacion" ColumnName="DescOcupacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INT_NivelesEscolaridad">
+            <EntityTypeMapping TypeName="SisGENModel.INT_NivelesEscolaridad">
+              <MappingFragment StoreEntitySet="INT_NivelesEscolaridad">
+                <ScalarProperty Name="IdNivelEscolar" ColumnName="IdNivelEscolar" />
+                <ScalarProperty Name="NivelEscolar" ColumnName="NivelEscolar" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INT_Ocupaciones">
+            <EntityTypeMapping TypeName="SisGENModel.INT_Ocupaciones">
+              <MappingFragment StoreEntitySet="INT_Ocupaciones">
+                <ScalarProperty Name="IdOcupacion" ColumnName="IdOcupacion" />
+                <ScalarProperty Name="Ocupacion" ColumnName="Ocupacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FAM_IntegrantesFamilia" TypeName="SisGENModel.FAM_IntegrantesFamilia" StoreEntitySet="FAM_IntegrantesFamilia">
+            <EndProperty Name="FAM_Familias">
+              <ScalarProperty Name="IdFamilia" ColumnName="IdFamilia" />
+            </EndProperty>
+            <EndProperty Name="INT_Integrantes">
+              <ScalarProperty Name="RUT" ColumnName="RUT" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

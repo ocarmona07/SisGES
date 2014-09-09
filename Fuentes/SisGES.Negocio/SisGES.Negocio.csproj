@@ -42,6 +42,17 @@
   <ItemGroup>
     <Compile Include="GeneralBo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuariosBo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SisGES.Datos\SisGES.Datos.csproj">
+      <Project>{69102990-793e-4e8d-a9f5-4fbd0cac7195}</Project>
+      <Name>SisGES.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SisGES.Entidades\SisGES.Entidades.csproj">
+      <Project>{86b4dfbf-9f24-4a36-bbc4-84b96b785087}</Project>
+      <Name>SisGES.Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

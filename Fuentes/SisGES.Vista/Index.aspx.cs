@@ -1,16 +1,13 @@
 ﻿namespace SisGES.Vista
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.Web.UI;
-    using System.Web.UI.WebControls;
+    using Negocio;
 
     /// <summary>
-    /// Clase del inicio del sitio
+    /// Clase de inicio del sitio
     /// </summary>
-    public partial class Index : System.Web.UI.Page
+    public partial class Index : Page
     {
         /// <summary>
         /// Método que se llama al iniciar la vista
@@ -19,6 +16,10 @@
         /// <param name="e">Argumentos del evento</param>
         protected void Page_Load(object sender, EventArgs e)
         {
+            //divCopyright.Controls.Add(new LiteralControl(new GeneralBo().Copyright));
+            if (IsPostBack) return;
+            Session["RUTUsuario"] = string.Empty;
+            lblMensaje.Text = string.Empty;
 
         }
 
@@ -29,7 +30,18 @@
         /// <param name="e">Argumentos del evento</param>
         protected void ValidarIngreso(object sender, EventArgs e)
         {
-            
+            if (new GeneralBo().ValidarRut(tbRut.Text))
+            {
+                if (new UsuariosBo().ValidarAcceso(tbRut.Text, tbClave.Text))
+                {
+                    Session["RUTUsuario"] = tbRut.Text.Substring(0, tbRut.Text.Length - 1).Replace(".", "").Replace("-", "");
+                    Response.Redirect("Inicio.aspx");
+                }
+                else
+                    lblMensaje.Text = "RUT o Contraseña incorrecta.";
+            }
+            else
+                lblMensaje.Text = "El RUT ingresado no es válido.";
         }
     }
 }

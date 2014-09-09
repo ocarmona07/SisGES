@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4f1abf3281c45fca3297f2bc7c51281" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="SisGENModel.FAM_Familias" Width="1.5" PointX="2.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.GEN_EstadoCivil" Width="1.5" PointX="7.375" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.GEN_GestoresFamiliares" Width="1.5" PointX="2.875" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.GEN_Parentescos" Width="1.5" PointX="7.375" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.GEN_Rol" Width="1.5" PointX="0.875" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.GEN_Usuarios" Width="1.5" PointX="0.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.INT_Integrantes" Width="1.5" PointX="5.125" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.INT_NivelesEscolaridad" Width="1.5" PointX="9.125" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisGENModel.INT_Ocupaciones" Width="1.5" PointX="5.125" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="SisGENModel.FK_FAM_FAMI_REFERENCE_GEN_GEST" ManuallyRouted="false" />
+        <AssociationConnector Association="SisGENModel.FK_FAM_FAMI_REFERENCE_GEN_USUA" ManuallyRouted="false" />
+        <AssociationConnector Association="SisGENModel.FK_INT_INTE_REFERENCE_GEN_ESTA" ManuallyRouted="false" />
+        <AssociationConnector Association="SisGENModel.FK_INT_INTE_REFERENCE_GEN_PARE" ManuallyRouted="false" />
+        <AssociationConnector Association="SisGENModel.FK_GEN_USUA_REFERENCE_GEN_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="SisGENModel.FK_INT_INTE_REFERENCE_INT_NIVE" ManuallyRouted="false" />
+        <AssociationConnector Association="SisGENModel.FK_INT_INTE_REFERENCE_INT_OCUP" ManuallyRouted="false" />
+        <AssociationConnector Association="SisGENModel.FAM_IntegrantesFamilia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

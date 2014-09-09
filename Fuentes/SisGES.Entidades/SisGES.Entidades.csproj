@@ -31,16 +31,82 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FAM_Familias.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_EstadoCivil.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_GestoresFamiliares.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_Parentescos.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_Rol.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GEN_Usuarios.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INT_Integrantes.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INT_NivelesEscolaridad.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="INT_Ocupaciones.cs">
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SisGES.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SisGES.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SisGES.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SisGES.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SisGES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SisGES.edmx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SisGES.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SisGES.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SisGES.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SisGES.edmx</DependentUpon>
+      <LastGenOutput>SisGES.Context.cs</LastGenOutput>
+    </None>
+    <None Include="SisGES.edmx.diagram">
+      <DependentUpon>SisGES.edmx</DependentUpon>
+    </None>
+    <None Include="SisGES.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SisGES.edmx</DependentUpon>
+      <LastGenOutput>SisGES.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

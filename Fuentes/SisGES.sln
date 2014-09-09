@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisGES.Entidades", "SisGES.Entidades\SisGES.Entidades.csproj", "{86B4DFBF-9F24-4A36-BBC4-84B96B785087}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisGES.Datos", "SisGES.Datos\SisGES.Datos.csproj", "{69102990-793E-4E8D-A9F5-4FBD0CAC7195}"
