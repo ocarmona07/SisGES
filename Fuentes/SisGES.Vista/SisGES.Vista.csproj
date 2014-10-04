@@ -67,9 +67,59 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Themes\logo_familia.jpg" />
-    <Content Include="Css\Estilo.css" />
+    <Content Include="Administracion\Usuarios.aspx" />
+    <Content Include="Administracion\GestoresFamiliares.aspx" />
+    <Content Include="css\style-blue.css" />
+    <Content Include="css\style-ie8.css" />
+    <Content Include="css\style-ie9.css" />
+    <Content Include="css\style.css" />
+    <Content Include="images\bg_direction_nav.png" />
+    <Content Include="images\bg_pattern.png" />
+    <Content Include="images\bloglistbg.png" />
+    <Content Include="images\comment-widget.png" />
+    <Content Include="images\delete.png" />
+    <Content Include="images\edit.png" />
+    <Content Include="images\enlarge.png" />
+    <Content Include="images\fancybox\blank.gif" />
+    <Content Include="images\fancybox\fancybox-x.png" />
+    <Content Include="images\fancybox\fancybox-y.png" />
+    <Content Include="images\fancybox\fancybox.png" />
+    <Content Include="images\fancybox\fancy_options.png" />
+    <Content Include="images\fancybox\fancy_title_over.png" />
+    <Content Include="images\gmap.png" />
+    <Content Include="images\info-blue.png" />
+    <Content Include="images\info-green.png" />
+    <Content Include="images\info-red.png" />
+    <Content Include="images\info-yellow.png" />
+    <Content Include="images\jp-controls.png" />
+    <Content Include="images\loader.gif" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\more.png" />
+    <Content Include="images\navitem.png" />
+    <Content Include="images\play-bar.png" />
+    <Content Include="images\quote-w.png" />
+    <Content Include="images\quote.png" />
+    <Content Include="images\search.png" />
+    <Content Include="images\social-mini.png" />
+    <Content Include="images\social.png" />
+    <Content Include="images\twtr-widget.png" />
+    <Content Include="images\user.png" />
     <Content Include="Index.aspx" />
+    <Content Include="Inicio.aspx" />
+    <Content Include="scripts\css3-mediaqueries.js" />
+    <Content Include="scripts\hoverintent.js" />
+    <Content Include="scripts\javascript.js" />
+    <Content Include="scripts\Jplayer.swf" />
+    <Content Include="scripts\jquery-1.11.1.js" />
+    <Content Include="scripts\jquery-1.11.1.min.js" />
+    <Content Include="scripts\jquery.easing.1.3.js" />
+    <Content Include="scripts\jquery.fancybox-1.3.4.js" />
+    <Content Include="scripts\jquery.flexslider-min.js" />
+    <Content Include="scripts\jquery.jplayer.min.js" />
+    <Content Include="scripts\jquery.masonry.min.js" />
+    <Content Include="scripts\MetroJs.lt.js" />
+    <Content Include="scripts\organictabs.jquery.js" />
+    <Content Include="Integrantes.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -79,6 +129,27 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracion\Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\GestoresFamiliares.aspx.cs">
+      <DependentUpon>GestoresFamiliares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administracion\GestoresFamiliares.aspx.designer.cs">
+      <DependentUpon>GestoresFamiliares.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Base.Master.cs">
+      <DependentUpon>Base.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Base.Master.designer.cs">
+      <DependentUpon>Base.Master</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -86,7 +157,21 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Integrantes.aspx.cs">
+      <DependentUpon>Integrantes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Integrantes.aspx.designer.cs">
+      <DependentUpon>Integrantes.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SisGES.Entidades\SisGES.Entidades.csproj">
@@ -99,8 +184,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Themes\Matrix_Dark\" />
+    <Content Include="Base.Master" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

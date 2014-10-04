@@ -7,9 +7,9 @@
     using Entidades;
 
     /// <summary>
-    /// Clase de datos para roles
+    /// Clase de datos para Gestores Familiares
     /// </summary>
-    public class RolesDa
+    public class GestoresFamiliaresDa
     {
         /// <summary>
         /// Entidades de SisGEN
@@ -19,23 +19,23 @@
         /// <summary>
         /// Método que inicializa las entidades
         /// </summary>
-        public RolesDa()
+        public GestoresFamiliaresDa()
         {
             if (_sisGESEntities == null)
                 _sisGESEntities = new SisGENEntities();
         }
 
         /// <summary>
-        /// Método que almacena un rol
+        /// Método que almacena un gestor familiar
         /// </summary>
-        /// <param name="rol">Datos del role</param>
+        /// <param name="gestorFamiliar">Datos del gestor</param>
         /// <returns>Id de ingreso</returns>
-        public int CrearRol(GEN_Rol rol)
+        public int CrearGestorFamiliar(GEN_GestoresFamiliares gestorFamiliar)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.GEN_GestoresFamiliares.AddOrUpdate(gestorFamiliar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -47,16 +47,16 @@
         }
 
         /// <summary>
-        /// Método que obtiene un rol
+        /// Método que obtiene un gestor familiar
         /// </summary>
-        /// <param name="idRol">Id del role</param>
-        /// <returns>Role</returns>
-        public GEN_Rol ObtenerRol(int idRol)
+        /// <param name="idGestorFamiliar">Id del gestor</param>
+        /// <returns>Gestor Familiar</returns>
+        public GEN_GestoresFamiliares ObtenerGestorFamiliar(int idGestorFamiliar)
         {
-            var retorno = new GEN_Rol();
+            var retorno = new GEN_GestoresFamiliares();
             try
             {
-                retorno = _sisGESEntities.GEN_Rol.Single(tc => tc.IdRol == idRol);
+                retorno = _sisGESEntities.GEN_GestoresFamiliares.Single(tc => tc.IdGestorFamiliar == idGestorFamiliar);
                 _sisGESEntities.Dispose();
                 return retorno;
             }
@@ -67,15 +67,15 @@
         }
 
         /// <summary>
-        /// Método que obtiene todos los roles
+        /// Método que obtiene todos los gestores familiares
         /// </summary>
-        /// <returns>Lista de roles</returns>
-        public List<GEN_Rol> ObtenerRoles()
+        /// <returns>Lista de gestores</returns>
+        public List<GEN_GestoresFamiliares> ObtenerGestoresFamiliares()
         {
-            var listaRetorno = new List<GEN_Rol>();
+            var listaRetorno = new List<GEN_GestoresFamiliares>();
             try
             {
-                listaRetorno = _sisGESEntities.GEN_Rol.ToList();
+                listaRetorno = _sisGESEntities.GEN_GestoresFamiliares.ToList();
                 _sisGESEntities.Dispose();
                 return listaRetorno;
             }
@@ -86,16 +86,16 @@
         }
 
         /// <summary>
-        /// Método que actualiza un rol
+        /// Método que actualiza un gestor familiar
         /// </summary>
-        /// <param name="rol">Datos del rol</param>
+        /// <param name="gestorFamiliar">Datos del gestor</param>
         /// <returns>Id de actualización</returns>
-        public int ActualizarRol(GEN_Rol rol)
+        public int ActualizarGestorFamiliar(GEN_GestoresFamiliares gestorFamiliar)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.GEN_GestoresFamiliares.AddOrUpdate(gestorFamiliar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -107,18 +107,18 @@
         }
 
         /// <summary>
-        /// Método que elimina un rol
+        /// Método que elimina un gestor familiar
         /// </summary>
-        /// <param name="idRol">Id del rol</param>
+        /// <param name="idGestorFamiliar">Id del gestor familiar</param>
         /// <returns>Id de confirmación</returns>
-        public int EliminarRol(int idRol)
+        public int EliminarGestorFamiliar(int idGestorFamiliar)
         {
             var idRetorno = 0;
             try
             {
-                var datosEliminar = new GEN_Rol { IdRol = idRol };
-                _sisGESEntities.GEN_Rol.Attach(datosEliminar);
-                _sisGESEntities.GEN_Rol.Remove(datosEliminar);
+                var datosEliminar = new GEN_GestoresFamiliares { IdGestorFamiliar = idGestorFamiliar };
+                _sisGESEntities.GEN_GestoresFamiliares.Attach(datosEliminar);
+                _sisGESEntities.GEN_GestoresFamiliares.Remove(datosEliminar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;

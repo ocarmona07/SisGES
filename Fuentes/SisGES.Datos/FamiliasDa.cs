@@ -7,9 +7,9 @@
     using Entidades;
 
     /// <summary>
-    /// Clase de datos para roles
+    /// Clase de datos para Familias
     /// </summary>
-    public class RolesDa
+    public class FamiliasDa
     {
         /// <summary>
         /// Entidades de SisGEN
@@ -19,23 +19,23 @@
         /// <summary>
         /// Método que inicializa las entidades
         /// </summary>
-        public RolesDa()
+        public FamiliasDa()
         {
             if (_sisGESEntities == null)
                 _sisGESEntities = new SisGENEntities();
         }
 
         /// <summary>
-        /// Método que almacena un rol
+        /// Método que almacena una familia
         /// </summary>
-        /// <param name="rol">Datos del role</param>
+        /// <param name="familia">Datos Familias</param>
         /// <returns>Id de ingreso</returns>
-        public int CrearRol(GEN_Rol rol)
+        public int CrearFamilia(FAM_Familias familia)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.FAM_Familias.AddOrUpdate(familia);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -47,16 +47,16 @@
         }
 
         /// <summary>
-        /// Método que obtiene un rol
+        /// Método que obtiene una familia
         /// </summary>
-        /// <param name="idRol">Id del role</param>
-        /// <returns>Role</returns>
-        public GEN_Rol ObtenerRol(int idRol)
+        /// <param name="idFamilia">Id familia</param>
+        /// <returns>Familia</returns>
+        public FAM_Familias ObtenerFamilia(int idFamilia)
         {
-            var retorno = new GEN_Rol();
+            var retorno = new FAM_Familias();
             try
             {
-                retorno = _sisGESEntities.GEN_Rol.Single(tc => tc.IdRol == idRol);
+                retorno = _sisGESEntities.FAM_Familias.Single(o => o.IdFamilia == idFamilia);
                 _sisGESEntities.Dispose();
                 return retorno;
             }
@@ -67,15 +67,15 @@
         }
 
         /// <summary>
-        /// Método que obtiene todos los roles
+        /// Método que obtiene todas las Familias
         /// </summary>
-        /// <returns>Lista de roles</returns>
-        public List<GEN_Rol> ObtenerRoles()
+        /// <returns>Lista de Familias</returns>
+        public List<FAM_Familias> ObtenerFamilias()
         {
-            var listaRetorno = new List<GEN_Rol>();
+            var listaRetorno = new List<FAM_Familias>();
             try
             {
-                listaRetorno = _sisGESEntities.GEN_Rol.ToList();
+                listaRetorno = _sisGESEntities.FAM_Familias.ToList();
                 _sisGESEntities.Dispose();
                 return listaRetorno;
             }
@@ -86,16 +86,16 @@
         }
 
         /// <summary>
-        /// Método que actualiza un rol
+        /// Método que actualiza una Familia
         /// </summary>
-        /// <param name="rol">Datos del rol</param>
+        /// <param name="familia">Datos Familia</param>
         /// <returns>Id de actualización</returns>
-        public int ActualizarRol(GEN_Rol rol)
+        public int ActualizarFamilia(FAM_Familias familia)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.FAM_Familias.AddOrUpdate(familia);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -107,18 +107,18 @@
         }
 
         /// <summary>
-        /// Método que elimina un rol
+        /// Método que elimina una familia
         /// </summary>
-        /// <param name="idRol">Id del rol</param>
+        /// <param name="idFamilia">Id Familia</param>
         /// <returns>Id de confirmación</returns>
-        public int EliminarRol(int idRol)
+        public int EliminarFamilia(int idFamilia)
         {
             var idRetorno = 0;
             try
             {
-                var datosEliminar = new GEN_Rol { IdRol = idRol };
-                _sisGESEntities.GEN_Rol.Attach(datosEliminar);
-                _sisGESEntities.GEN_Rol.Remove(datosEliminar);
+                var datosEliminar = new FAM_Familias { IdFamilia = idFamilia };
+                _sisGESEntities.FAM_Familias.Attach(datosEliminar);
+                _sisGESEntities.FAM_Familias.Remove(datosEliminar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;

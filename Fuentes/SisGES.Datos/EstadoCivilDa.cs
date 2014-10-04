@@ -7,9 +7,9 @@
     using Entidades;
 
     /// <summary>
-    /// Clase de datos para roles
+    /// Clase de datos para Estado Civil
     /// </summary>
-    public class RolesDa
+    public class EstadoCivilDa
     {
         /// <summary>
         /// Entidades de SisGEN
@@ -19,23 +19,23 @@
         /// <summary>
         /// Método que inicializa las entidades
         /// </summary>
-        public RolesDa()
+        public EstadoCivilDa()
         {
             if (_sisGESEntities == null)
                 _sisGESEntities = new SisGENEntities();
         }
 
         /// <summary>
-        /// Método que almacena un rol
+        /// Método que almacena un Estado Civil
         /// </summary>
-        /// <param name="rol">Datos del role</param>
+        /// <param name="estadoCivil">Datos Estado Civil</param>
         /// <returns>Id de ingreso</returns>
-        public int CrearRol(GEN_Rol rol)
+        public int CrearEstadoCivil(GEN_EstadoCivil estadoCivil)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.GEN_EstadoCivil.AddOrUpdate(estadoCivil);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -47,16 +47,16 @@
         }
 
         /// <summary>
-        /// Método que obtiene un rol
+        /// Método que obtiene un parentesco
         /// </summary>
-        /// <param name="idRol">Id del role</param>
-        /// <returns>Role</returns>
-        public GEN_Rol ObtenerRol(int idRol)
+        /// <param name="idEstadoCivil">Id Estado Civil</param>
+        /// <returns>EstadoCivil</returns>
+        public GEN_EstadoCivil ObtenerEstadoCivil(int idEstadoCivil)
         {
-            var retorno = new GEN_Rol();
+            var retorno = new GEN_EstadoCivil();
             try
             {
-                retorno = _sisGESEntities.GEN_Rol.Single(tc => tc.IdRol == idRol);
+                retorno = _sisGESEntities.GEN_EstadoCivil.Single(o => o.IdEstadoCivil == idEstadoCivil);
                 _sisGESEntities.Dispose();
                 return retorno;
             }
@@ -67,15 +67,15 @@
         }
 
         /// <summary>
-        /// Método que obtiene todos los roles
+        /// Método que obtiene todos los Estados Civiles
         /// </summary>
-        /// <returns>Lista de roles</returns>
-        public List<GEN_Rol> ObtenerRoles()
+        /// <returns>Lista de parentescos</returns>
+        public List<GEN_EstadoCivil> ObtenerEstadosCiviles()
         {
-            var listaRetorno = new List<GEN_Rol>();
+            var listaRetorno = new List<GEN_EstadoCivil>();
             try
             {
-                listaRetorno = _sisGESEntities.GEN_Rol.ToList();
+                listaRetorno = _sisGESEntities.GEN_EstadoCivil.ToList();
                 _sisGESEntities.Dispose();
                 return listaRetorno;
             }
@@ -86,16 +86,16 @@
         }
 
         /// <summary>
-        /// Método que actualiza un rol
+        /// Método que actualiza un Estado Civil
         /// </summary>
-        /// <param name="rol">Datos del rol</param>
+        /// <param name="estadoCivil">Datos Estado Civil</param>
         /// <returns>Id de actualización</returns>
-        public int ActualizarRol(GEN_Rol rol)
+        public int ActualizarEstadoCivil(GEN_EstadoCivil estadoCivil)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.GEN_EstadoCivil.AddOrUpdate(estadoCivil);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -107,18 +107,18 @@
         }
 
         /// <summary>
-        /// Método que elimina un rol
+        /// Método que elimina un Estado Civil
         /// </summary>
-        /// <param name="idRol">Id del rol</param>
+        /// <param name="idEstadoCivil">Id Estado Civil</param>
         /// <returns>Id de confirmación</returns>
-        public int EliminarRol(int idRol)
+        public int EliminarEstadoCivil(int idEstadoCivil)
         {
             var idRetorno = 0;
             try
             {
-                var datosEliminar = new GEN_Rol { IdRol = idRol };
-                _sisGESEntities.GEN_Rol.Attach(datosEliminar);
-                _sisGESEntities.GEN_Rol.Remove(datosEliminar);
+                var datosEliminar = new GEN_EstadoCivil { IdEstadoCivil = idEstadoCivil };
+                _sisGESEntities.GEN_EstadoCivil.Attach(datosEliminar);
+                _sisGESEntities.GEN_EstadoCivil.Remove(datosEliminar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;

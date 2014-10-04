@@ -39,8 +39,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GeneralDa.cs" />
+    <Compile Include="EstadoCivilDa.cs" />
+    <Compile Include="NivelesEscolaridadDa.cs" />
+    <Compile Include="FamiliasDa.cs" />
+    <Compile Include="OcupacionesDa.cs" />
+    <Compile Include="ParentescosDa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GestoresFamiliaresDa.cs" />
     <Compile Include="RolesDa.cs" />
+    <Compile Include="IntegrantesDa.cs" />
     <Compile Include="UsuariosDa.cs" />
   </ItemGroup>
   <ItemGroup>

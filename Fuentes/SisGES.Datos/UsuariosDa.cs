@@ -1,9 +1,8 @@
-﻿using System.Data.Entity.Migrations;
-
-namespace SisGES.Datos
+﻿namespace SisGES.Datos
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity.Migrations;
     using System.Linq;
     using Entidades;
 
@@ -76,7 +75,7 @@ namespace SisGES.Datos
             var listaRetorno = new List<GEN_Usuarios>();
             try
             {
-                listaRetorno = _sisGESEntities.GEN_Usuarios.ToList();
+                listaRetorno = _sisGESEntities.GEN_Usuarios.Include("GEN_Rol").ToList();
                 _sisGESEntities.Dispose();
                 return listaRetorno;
             }
@@ -117,9 +116,9 @@ namespace SisGES.Datos
             var idRetorno = 0;
             try
             {
-                var usuarioEliminar = new GEN_Usuarios { RUT = rutUsuario };
-                _sisGESEntities.GEN_Usuarios.Attach(usuarioEliminar);
-                _sisGESEntities.GEN_Usuarios.Remove(usuarioEliminar);
+                var datosEliminar = new GEN_Usuarios { RUT = rutUsuario };
+                _sisGESEntities.GEN_Usuarios.Attach(datosEliminar);
+                _sisGESEntities.GEN_Usuarios.Remove(datosEliminar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;

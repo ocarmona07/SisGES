@@ -7,35 +7,35 @@
     using Entidades;
 
     /// <summary>
-    /// Clase de datos para roles
+    /// Clase de datos para integrantes
     /// </summary>
-    public class RolesDa
+    public class IntegrantesDa
     {
         /// <summary>
-        /// Entidades de SisGEN
+        /// Entidades de SisGES
         /// </summary>
         private readonly SisGENEntities _sisGESEntities;
 
         /// <summary>
         /// Método que inicializa las entidades
         /// </summary>
-        public RolesDa()
+        public IntegrantesDa()
         {
             if (_sisGESEntities == null)
                 _sisGESEntities = new SisGENEntities();
         }
 
         /// <summary>
-        /// Método que almacena un rol
+        /// Método que almacena un integrante
         /// </summary>
-        /// <param name="rol">Datos del role</param>
+        /// <param name="integrante">Datos del integrante</param>
         /// <returns>Id de ingreso</returns>
-        public int CrearRol(GEN_Rol rol)
+        public int CrearIntegrante(INT_Integrantes integrante)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.INT_Integrantes.AddOrUpdate(integrante);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -47,16 +47,16 @@
         }
 
         /// <summary>
-        /// Método que obtiene un rol
+        /// Método que obtiene un integrante
         /// </summary>
-        /// <param name="idRol">Id del role</param>
-        /// <returns>Role</returns>
-        public GEN_Rol ObtenerRol(int idRol)
+        /// <param name="rutIntegrante">RUT del integrante</param>
+        /// <returns>Integrante</returns>
+        public INT_Integrantes ObtenerIntegrante(int rutIntegrante)
         {
-            var retorno = new GEN_Rol();
+            var retorno = new INT_Integrantes();
             try
             {
-                retorno = _sisGESEntities.GEN_Rol.Single(tc => tc.IdRol == idRol);
+                retorno = _sisGESEntities.INT_Integrantes.Single(tc => tc.RUT == rutIntegrante);
                 _sisGESEntities.Dispose();
                 return retorno;
             }
@@ -67,15 +67,15 @@
         }
 
         /// <summary>
-        /// Método que obtiene todos los roles
+        /// Método que obtiene todos los integrantes
         /// </summary>
-        /// <returns>Lista de roles</returns>
-        public List<GEN_Rol> ObtenerRoles()
+        /// <returns>Lista de integrantes</returns>
+        public List<INT_Integrantes> ObtenerIntegrantes()
         {
-            var listaRetorno = new List<GEN_Rol>();
+            var listaRetorno = new List<INT_Integrantes>();
             try
             {
-                listaRetorno = _sisGESEntities.GEN_Rol.ToList();
+                listaRetorno = _sisGESEntities.INT_Integrantes.ToList();
                 _sisGESEntities.Dispose();
                 return listaRetorno;
             }
@@ -86,16 +86,16 @@
         }
 
         /// <summary>
-        /// Método que actualiza un rol
+        /// Método que actualiza un integrante
         /// </summary>
-        /// <param name="rol">Datos del rol</param>
+        /// <param name="integrante">Datos del integrante</param>
         /// <returns>Id de actualización</returns>
-        public int ActualizarRol(GEN_Rol rol)
+        public int ActualizarIntegrante(INT_Integrantes integrante)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.INT_Integrantes.AddOrUpdate(integrante);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -107,18 +107,18 @@
         }
 
         /// <summary>
-        /// Método que elimina un rol
+        /// Método que elimina un integrante
         /// </summary>
-        /// <param name="idRol">Id del rol</param>
+        /// <param name="rutIntegrante">RUT del integrante</param>
         /// <returns>Id de confirmación</returns>
-        public int EliminarRol(int idRol)
+        public int EliminarIntegrante(int rutIntegrante)
         {
             var idRetorno = 0;
             try
             {
-                var datosEliminar = new GEN_Rol { IdRol = idRol };
-                _sisGESEntities.GEN_Rol.Attach(datosEliminar);
-                _sisGESEntities.GEN_Rol.Remove(datosEliminar);
+                var datosEliminar = new INT_Integrantes { RUT = rutIntegrante };
+                _sisGESEntities.INT_Integrantes.Attach(datosEliminar);
+                _sisGESEntities.INT_Integrantes.Remove(datosEliminar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;

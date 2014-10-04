@@ -7,9 +7,9 @@
     using Entidades;
 
     /// <summary>
-    /// Clase de datos para roles
+    /// Clase de datos para Ocupaciones
     /// </summary>
-    public class RolesDa
+    public class OcupacionesDa
     {
         /// <summary>
         /// Entidades de SisGEN
@@ -19,23 +19,23 @@
         /// <summary>
         /// Método que inicializa las entidades
         /// </summary>
-        public RolesDa()
+        public OcupacionesDa()
         {
             if (_sisGESEntities == null)
                 _sisGESEntities = new SisGENEntities();
         }
 
         /// <summary>
-        /// Método que almacena un rol
+        /// Método que almacena una ocupacion
         /// </summary>
-        /// <param name="rol">Datos del role</param>
+        /// <param name="ocupacion">Datos Ocupaciones</param>
         /// <returns>Id de ingreso</returns>
-        public int CrearRol(GEN_Rol rol)
+        public int CrearOcupacion(INT_Ocupaciones ocupacion)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.INT_Ocupaciones.AddOrUpdate(ocupacion);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -47,16 +47,16 @@
         }
 
         /// <summary>
-        /// Método que obtiene un rol
+        /// Método que obtiene una ocupacion
         /// </summary>
-        /// <param name="idRol">Id del role</param>
-        /// <returns>Role</returns>
-        public GEN_Rol ObtenerRol(int idRol)
+        /// <param name="idOcupacion">Id ocupación</param>
+        /// <returns>Ocupación</returns>
+        public INT_Ocupaciones ObtenerOcupacion(int idOcupacion)
         {
-            var retorno = new GEN_Rol();
+            var retorno = new INT_Ocupaciones();
             try
             {
-                retorno = _sisGESEntities.GEN_Rol.Single(tc => tc.IdRol == idRol);
+                retorno = _sisGESEntities.INT_Ocupaciones.Single(o => o.IdOcupacion == idOcupacion);
                 _sisGESEntities.Dispose();
                 return retorno;
             }
@@ -67,15 +67,15 @@
         }
 
         /// <summary>
-        /// Método que obtiene todos los roles
+        /// Método que obtiene todas las Ocupaciones
         /// </summary>
-        /// <returns>Lista de roles</returns>
-        public List<GEN_Rol> ObtenerRoles()
+        /// <returns>Lista de Ocupaciones</returns>
+        public List<INT_Ocupaciones> ObtenerOcupaciones()
         {
-            var listaRetorno = new List<GEN_Rol>();
+            var listaRetorno = new List<INT_Ocupaciones>();
             try
             {
-                listaRetorno = _sisGESEntities.GEN_Rol.ToList();
+                listaRetorno = _sisGESEntities.INT_Ocupaciones.ToList();
                 _sisGESEntities.Dispose();
                 return listaRetorno;
             }
@@ -86,16 +86,16 @@
         }
 
         /// <summary>
-        /// Método que actualiza un rol
+        /// Método que actualiza una Ocupación
         /// </summary>
-        /// <param name="rol">Datos del rol</param>
+        /// <param name="ocupacion">Datos Ocupación</param>
         /// <returns>Id de actualización</returns>
-        public int ActualizarRol(GEN_Rol rol)
+        public int ActualizarOcupacion(INT_Ocupaciones ocupacion)
         {
             var idRetorno = 0;
             try
             {
-                _sisGESEntities.GEN_Rol.AddOrUpdate(rol);
+                _sisGESEntities.INT_Ocupaciones.AddOrUpdate(ocupacion);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
@@ -107,18 +107,18 @@
         }
 
         /// <summary>
-        /// Método que elimina un rol
+        /// Método que elimina una ocupacion
         /// </summary>
-        /// <param name="idRol">Id del rol</param>
+        /// <param name="idOcupacion">Id Ocupacion</param>
         /// <returns>Id de confirmación</returns>
-        public int EliminarRol(int idRol)
+        public int EliminarOcupacion(int idOcupacion)
         {
             var idRetorno = 0;
             try
             {
-                var datosEliminar = new GEN_Rol { IdRol = idRol };
-                _sisGESEntities.GEN_Rol.Attach(datosEliminar);
-                _sisGESEntities.GEN_Rol.Remove(datosEliminar);
+                var datosEliminar = new INT_Ocupaciones { IdOcupacion = idOcupacion };
+                _sisGESEntities.INT_Ocupaciones.Attach(datosEliminar);
+                _sisGESEntities.INT_Ocupaciones.Remove(datosEliminar);
                 idRetorno = _sisGESEntities.SaveChanges();
                 _sisGESEntities.Dispose();
                 return idRetorno;
