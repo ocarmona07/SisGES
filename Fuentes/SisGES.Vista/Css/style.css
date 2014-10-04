@@ -13,6 +13,9 @@ Author : Billy Foo
     border: 0;
 }
 
+.lightbox {
+}
+
 a {
     text-decoration: none;
     border: none;
@@ -281,7 +284,7 @@ Content - Universal
     margin-top: 40px;
 }
 
-#content-title {
+#content-title, #content-title2 {
     font-size: 5em;
     font-weight: 200;
     color: #fff;
@@ -1029,7 +1032,7 @@ div.hl2 {
 }
 
 @media all and (max-width:640px) {
-    #content-title {
+    #content-title, #content-title2 {
         margin-left: 0;
         margin-right: 0;
     }
@@ -3344,7 +3347,7 @@ MetroJS
         left: 0;
         width: 40px;
         height: 480px;
-        background-image: url('~/images/fancybox/fancybox.png');
+        background-image: url('../images/fancybox/fancybox.png');
     }
 
 #fancybox-overlay {
@@ -3408,7 +3411,7 @@ MetroJS
     left: 45px;
     width: 32px;
     height: 32px;
-    background: transparent url('~/images/fancybox/fancy_options.png') 0 -32px;
+    background: transparent url('../images/fancybox/fancy_options.png') 0 -32px;
     cursor: pointer;
     z-index: 1103;
     display: none;
@@ -3450,7 +3453,7 @@ MetroJS
     width: 32px;
     cursor: pointer;
     outline: none;
-    background: transparent url('~/images/fancybox/blank.gif');
+    background: transparent url('../images/fancybox/blank.gif');
     z-index: 1102;
     display: none;
     border: none;
@@ -3476,7 +3479,7 @@ MetroJS
 }
 
 #fancybox-left-ico {
-    background-image: url('~/images/fancybox/fancy_options.png');
+    background-image: url('../images/fancybox/fancy_options.png');
     background-position: 0 0;
 }
 
@@ -3485,7 +3488,7 @@ MetroJS
     }
 
 #fancybox-right-ico {
-    background-image: url('~/images/fancybox/fancy_options.png');
+    background-image: url('../images/fancybox/fancy_options.png');
     background-position: 0 -64px;
 }
 
@@ -3519,13 +3522,13 @@ MetroJS
     top: -20px;
     left: 0;
     width: 100%;
-    background-image: url('~/images/fancybox/fancybox-x.png');
+    background-image: url('../images/fancybox/fancybox-x.png');
 }
 
 #fancybox-bg-ne {
     top: -20px;
     right: -20px;
-    background-image: url('~/images/fancybox/fancybox.png');
+    background-image: url('../images/fancybox/fancybox.png');
     background-position: -40px -162px;
 }
 
@@ -3533,14 +3536,14 @@ MetroJS
     top: 0;
     right: -20px;
     height: 100%;
-    background-image: url('~/images/fancybox/fancybox-y.png');
+    background-image: url('../images/fancybox/fancybox-y.png');
     background-position: -20px 0;
 }
 
 #fancybox-bg-se {
     bottom: -20px;
     right: -20px;
-    background-image: url('~/images/fancybox/fancybox.png');
+    background-image: url('../images/fancybox/fancybox.png');
     background-position: -40px -182px;
 }
 
@@ -3548,14 +3551,14 @@ MetroJS
     bottom: -20px;
     left: 0;
     width: 100%;
-    background-image: url('~/images/fancybox/fancybox-x.png');
+    background-image: url('../images/fancybox/fancybox-x.png');
     background-position: 0 -20px;
 }
 
 #fancybox-bg-sw {
     bottom: -20px;
     left: -20px;
-    background-image: url('~/images/fancybox/fancybox.png');
+    background-image: url('../images/fancybox/fancybox.png');
     background-position: -40px -142px;
 }
 
@@ -3563,13 +3566,13 @@ MetroJS
     top: 0;
     left: -20px;
     height: 100%;
-    background-image: url('~/images/fancybox/fancybox-y.png');
+    background-image: url('../images/fancybox/fancybox-y.png');
 }
 
 #fancybox-bg-nw {
     top: -20px;
     left: -20px;
-    background-image: url('~/images/fancybox/fancybox.png');
+    background-image: url('../images/fancybox/fancybox.png');
     background-position: -40px -122px;
 }
 
@@ -3602,7 +3605,7 @@ MetroJS
 
 #fancybox-title-over {
     padding: 10px;
-    background-image: url('~/images/fancybox/fancy_title_over.png');
+    background-image: url('../images/fancybox/fancy_title_over.png');
     display: block;
 }
 
@@ -3626,7 +3629,7 @@ MetroJS
 
 #fancybox-title-float-left {
     padding: 0 0 0 15px;
-    background: url('~/images/fancybox/fancybox.png') -40px -90px no-repeat;
+    background: url('../images/fancybox/fancybox.png') -40px -90px no-repeat;
 }
 
 #fancybox-title-float-main {
@@ -3634,12 +3637,12 @@ MetroJS
     line-height: 29px;
     font-weight: bold;
     padding: 0 0 3px 0;
-    background: url('~/images/fancybox/fancybox-x.png') 0 -40px;
+    background: url('../images/fancybox/fancybox-x.png') 0 -40px;
 }
 
 #fancybox-title-float-right {
     padding: 0 0 0 15px;
-    background: url('~/images/fancybox/fancybox.png') -55px -90px no-repeat;
+    background: url('../images/fancybox/fancybox.png') -55px -90px no-repeat;
 }
 
 /*
@@ -4353,12 +4356,12 @@ Position-dependent classes
     left: 0;
 }
 /*-------------------------Browser Specific CSS-----------------------------*/
-noindex:-o-prefocus, #content-title, .page-sub-title h1, .section-title, .widget h5 {
+noindex:-o-prefocus, #content-title, #content-title2, .page-sub-title h1, .section-title, .widget h5 {
     font-family: 'Segoe UI Light' !important;
 }
 
 @media all and (-webkit-min-device-pixel-ratio:0) {
-    #content-title, .page-sub-title h1, .section-title, .widget h5 {
+    #content-title, #content-title2, .page-sub-title h1, .section-title, .widget h5 {
         font-family: 'Segoe UI Light' !important;
     }
 }

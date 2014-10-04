@@ -15,12 +15,12 @@
                     <asp:TableRow runat="server">
                         <asp:TableCell runat="server" HorizontalAlign="Right">
                             <asp:Button runat="server" ID="btnListaGestores" Width="120px" Height="30px" Text="Lista Gestores"
-                                OnClick="MostrarListaGestores" />
+                                OnClick="MostrarListaGestores" CausesValidation="False" />
                         </asp:TableCell>
                         <asp:TableCell runat="server" Width="100px" />
                         <asp:TableCell runat="server" HorizontalAlign="Left">
                             <asp:Button runat="server" ID="btnIngresoGestor" Width="120px" Height="30px" Text="Ingresar Gestor"
-                                OnClick="MostrarIngresoGestores" />
+                                OnClick="MostrarIngresoGestores" CausesValidation="False" />
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
@@ -58,12 +58,14 @@
                             <asp:Table runat="server" CssClass="comment-form-ingreso">
                                 <asp:TableRow>
                                     <asp:TableCell runat="server" Width="80px" Height="40px">
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="tbNombres" InitialValue="" Text="*" CssClass="Mensaje" Style="margin-right: 5px;" />
                                         <asp:Label runat="server" Text="Nombres:" Style="padding-right: 5px;" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" Width="200px">
                                         <asp:TextBox runat="server" ID="tbNombres" Width="170px" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" Width="130px">
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="tbApPaterno" InitialValue="" Text="*" CssClass="Mensaje" Style="margin-right: 5px;" />
                                         <asp:Label runat="server" Text="Apellido Paterno:" Style="padding-right: 5px;" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" Width="180px">
@@ -78,12 +80,14 @@
                                 </asp:TableRow>
                                 <asp:TableRow>
                                     <asp:TableCell runat="server" Height="40px">
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="tbTelefono" InitialValue="" Text="*" CssClass="Mensaje" Style="margin-right: 5px;" />
                                         <asp:Label runat="server" Text="Telefono:" Style="padding-right: 5px;" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server">
                                         <asp:TextBox runat="server" ID="tbTelefono" MaxLength="9" Width="120px" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server">
+                                        <asp:RequiredFieldValidator runat="server" ControlToValidate="tbEmail" InitialValue="" Text="*" CssClass="Mensaje" Style="margin-right: 5px;" />
                                         <asp:Label runat="server" Text="Email:" Style="padding-right: 5px;" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" ColumnSpan="3">
@@ -97,7 +101,7 @@
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" ColumnSpan="3" HorizontalAlign="Left">
                                         <asp:Button runat="server" ID="btnLimpiar" Text="Limpiar" Width="120px" Height="25px"
-                                            OnClick="LimpiarControles" Style="margin-left: 35px;" />
+                                            OnClick="LimpiarControles" CausesValidation="False" Style="margin-left: 35px;" />
                                     </asp:TableCell>
                                 </asp:TableRow>
                             </asp:Table>

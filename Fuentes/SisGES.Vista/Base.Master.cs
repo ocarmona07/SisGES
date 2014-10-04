@@ -21,7 +21,7 @@
 
             if (string.IsNullOrEmpty(Session["RUTUsuario"] + ""))
             {
-                //Response.Redirect("~/Index.aspx");
+                Response.Redirect("~/Index.aspx");
             }
         }
 

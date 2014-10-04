@@ -73,9 +73,13 @@
     <Content Include="css\style-ie8.css" />
     <Content Include="css\style-ie9.css" />
     <Content Include="css\style.css" />
+    <Content Include="images\articles\mindessoc.jpg" />
+    <Content Include="images\articles\quotation_1.png" />
+    <Content Include="images\articles\quotation_2.png" />
     <Content Include="images\bg_direction_nav.png" />
     <Content Include="images\bg_pattern.png" />
     <Content Include="images\bloglistbg.png" />
+    <Content Include="images\calendar.png" />
     <Content Include="images\comment-widget.png" />
     <Content Include="images\delete.png" />
     <Content Include="images\edit.png" />
@@ -87,6 +91,7 @@
     <Content Include="images\fancybox\fancy_options.png" />
     <Content Include="images\fancybox\fancy_title_over.png" />
     <Content Include="images\gmap.png" />
+    <Content Include="images\hyperlink.png" />
     <Content Include="images\info-blue.png" />
     <Content Include="images\info-green.png" />
     <Content Include="images\info-red.png" />
@@ -96,12 +101,25 @@
     <Content Include="images\logo.png" />
     <Content Include="images\more.png" />
     <Content Include="images\navitem.png" />
+    <Content Include="images\placeholder\blog_pre_blank.png" />
+    <Content Include="images\placeholder\blog_pre_blank_1.jpg" />
+    <Content Include="images\placeholder\blog_pre_blank_2.JPG" />
+    <Content Include="images\placeholder\contact_blank.png" />
+    <Content Include="images\placeholder\large_blank.png" />
+    <Content Include="images\placeholder\list_blank.png" />
+    <Content Include="images\placeholder\medium_blank.png" />
+    <Content Include="images\placeholder\medium_blank_1.jpg" />
+    <Content Include="images\placeholder\medium_blank_2.jpg" />
+    <Content Include="images\placeholder\page_blank.png" />
+    <Content Include="images\placeholder\portfolio_pre_blank.png" />
+    <Content Include="images\placeholder\small_blank.png" />
     <Content Include="images\play-bar.png" />
     <Content Include="images\quote-w.png" />
     <Content Include="images\quote.png" />
     <Content Include="images\search.png" />
     <Content Include="images\social-mini.png" />
     <Content Include="images\social.png" />
+    <Content Include="images\tilehover.png" />
     <Content Include="images\twtr-widget.png" />
     <Content Include="images\user.png" />
     <Content Include="Index.aspx" />
@@ -186,7 +204,6 @@
   <ItemGroup>
     <Content Include="Base.Master" />
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

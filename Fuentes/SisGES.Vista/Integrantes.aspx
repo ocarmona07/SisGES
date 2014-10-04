@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Base.Master" AutoEventWireup="true" CodeBehind="Integrantes.aspx.cs" Inherits="SisGES.Vista.Integrantes" %>
 
+<%@ Register TagPrefix="act" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit, Version=4.1.7.1213, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphBody" runat="server">
@@ -15,7 +16,7 @@
                     <asp:TableRow runat="server">
                         <asp:TableCell runat="server" HorizontalAlign="Right">
                             <asp:Button runat="server" ID="btnBuscarIntegrante" Width="120px" Height="30px" Text="Buscar Integrante"
-                                OnClick="MostrarListaIntegrantes" CausesValidation="False" />
+                                OnClick="MostrarBuscarIntegrante" CausesValidation="False" />
                         </asp:TableCell>
                         <asp:TableCell runat="server" Width="50px" />
                         <asp:TableCell runat="server" HorizontalAlign="Center">
@@ -67,6 +68,30 @@
                         </asp:TableCell>
                     </asp:TableRow>
                 </asp:Table>
+                <asp:Table runat="server" ID="tblBuscarIntegrante" HorizontalAlign="Center" Width="100%" Visible="False">
+                    <asp:TableRow>
+                        <asp:TableCell runat="server" HorizontalAlign="Center">
+                            <br />
+                            <asp:Table runat="server" CssClass="comment-form-ingreso">
+                                <asp:TableRow>
+                                    <asp:TableCell runat="server" Width="150px" Height="40px" HorizontalAlign="Right">
+                                        <asp:Label runat="server" Text="Buscar por RUT:" Style="padding-right: 5px;" />
+                                    </asp:TableCell>
+                                    <asp:TableCell runat="server" Width="150px">
+                                        <asp:TextBox runat="server" ID="tbBuscaRUT" Width="76px" MaxLength="8" />
+                                        <span>- </span>
+                                        <asp:TextBox runat="server" ID="tbBuscaDV" Width="20px" MaxLength="1" />
+                                    </asp:TableCell>
+                                    <asp:TableCell runat="server" Width="130px">
+                                        <asp:Button runat="server" ID="btnBuscar" Text="Buscar" Width="120px" Height="25px"
+                                            CausesValidation="False" OnClick="BuscarPorRut" />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                            </asp:Table>
+                            <br />
+                        </asp:TableCell>
+                    </asp:TableRow>
+                </asp:Table>
                 <asp:Table runat="server" ID="tblIngresoIntegrante" HorizontalAlign="Center" Width="100%" Visible="False">
                     <asp:TableRow>
                         <asp:TableCell runat="server">
@@ -79,7 +104,7 @@
                                     <asp:TableCell runat="server" ColumnSpan="5">
                                         <asp:TextBox runat="server" ID="tbRUT" Width="76px" MaxLength="8" />
                                         <span>- </span>
-                                        <asp:TextBox runat="server" ID="tbDV" Width="20px" MaxLength="1" Enabled="False" />
+                                        <asp:TextBox runat="server" ID="tbDV" Width="20px" MaxLength="1" />
                                     </asp:TableCell>
                                 </asp:TableRow>
                                 <asp:TableRow>
@@ -117,7 +142,10 @@
                                         <asp:Label runat="server" Text="Fecha Nacimiento:" Style="padding-right: 5px;" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server">
-                                        <asp:TextBox runat="server" ID="tbFechaNac" Width="100px" ReadOnly="True" />
+                                        <asp:TextBox runat="server" ID="tbFechaNac" Width="100px" />
+                                        <asp:ImageButton runat="server" ID="ibFechaNac" ImageUrl="~/images/calendar.png" Width="24px" CausesValidation="False"
+                                            OnClientClick="return false;" Style="margin-left: 5px; background-color: transparent; margin: -10px 5px" />
+                                        <act:CalendarExtender ID="calFechaNac" runat="server" TargetControlID="tbFechaNac" PopupButtonID="ibFechaNac" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" HorizontalAlign="Right">
                                         <asp:Label runat="server" Text="Sexo:" Style="padding-right: 5px;" />
@@ -162,11 +190,11 @@
                                 <asp:TableRow>
                                     <asp:TableCell runat="server" ColumnSpan="3" HorizontalAlign="Right" Height="60px">
                                         <asp:Button runat="server" ID="btnIngresar" Text="Guardar" Width="120px" Height="25px"
-                                            OnClick="IngresarIntegrante" CausesValidation="True" Style="margin-right: 35px;" />
+                                            OnClick="IngresarIntegrante" CausesValidation="True" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" ColumnSpan="3" HorizontalAlign="Left">
                                         <asp:Button runat="server" ID="btnLimpiar" Text="Limpiar" Width="120px" Height="25px"
-                                            OnClick="LimpiarControles" CausesValidation="False" Style="margin-left: 35px;" />
+                                            OnClick="LimpiarControles" CausesValidation="False" Style="margin-left: 70px;" />
                                     </asp:TableCell>
                                 </asp:TableRow>
                             </asp:Table>

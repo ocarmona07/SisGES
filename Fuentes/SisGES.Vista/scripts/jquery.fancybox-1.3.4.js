@@ -352,13 +352,11 @@
 				});
 
 				if (!overlay.is(':visible')) {
-					if (isIE6) {
-						$('select:not(#fancybox-tmp select)').filter(function() {
-							return this.style.visibility !== 'hidden';
-						}).css({'visibility' : 'hidden'}).one('fancybox-cleanup', function() {
-							this.style.visibility = 'inherit';
-						});
-					}
+					$('select:not(#fancybox-tmp select)').filter(function() {
+						return this.style.visibility !== 'hidden';
+					}).css({'visibility' : 'hidden'}).one('fancybox-cleanup', function() {
+						this.style.visibility = 'inherit';
+					});
 
 					overlay.show();
 				}
@@ -943,7 +941,7 @@
 		$(window).unbind("resize.fb scroll.fb");
 		$(document).unbind('keydown.fb');
 
-		content.find('iframe').attr('src', isIE6 && /^https/i.test(window.location.href || '') ? 'javascript:void(false)' : 'about:blank');
+		content.find('iframe').attr('src', /^https/i.test(window.location.href || '') ? 'javascript:void(false)' : 'about:blank');
 
 		if (currentOpts.titlePosition !== 'inside') {
 			title.empty();

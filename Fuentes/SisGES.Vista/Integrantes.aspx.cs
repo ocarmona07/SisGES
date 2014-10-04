@@ -19,6 +19,27 @@
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack) return;
+            tbFechaNac.Attributes.Add("readonly", "readonly");
+
+            ddlParentesco.DataSource = new ParentescosBo().ObtenerParentescos();
+            ddlParentesco.DataTextField = "Parentesco";
+            ddlParentesco.DataValueField = "IdParentesco";
+            ddlParentesco.DataBind();
+
+            ddlEstadoCivil.DataSource = new EstadoCivilBo().ObtenerEstadosCiviles();
+            ddlEstadoCivil.DataTextField = "EstadoCivil";
+            ddlEstadoCivil.DataValueField = "IdEstadoCivil";
+            ddlEstadoCivil.DataBind();
+
+            ddlNivelEscolar.DataSource = new NivelEscolarBo().ObtenerNivelesEscolaridad();
+            ddlNivelEscolar.DataTextField = "NivelEscolar";
+            ddlNivelEscolar.DataValueField = "IdNivelEscolar";
+            ddlNivelEscolar.DataBind();
+
+            ddlOcupacion.DataSource = new OcupacionesBo().ObtenerOcupaciones();
+            ddlOcupacion.DataTextField = "Ocupacion";
+            ddlOcupacion.DataValueField = "IdOcupacion";
+            ddlOcupacion.DataBind();
             CargarGrilla();
         }
 
@@ -30,6 +51,8 @@
         protected void LimpiarControles(object sender, EventArgs e)
         {
             btnIngresar.CommandArgument = string.Empty;
+            tbBuscaRUT.Text = string.Empty;
+            tbBuscaDV.Text = string.Empty;
             tbRUT.Text = string.Empty;
             tbRUT.Enabled = true;
             tbDV.Text = string.Empty;
@@ -54,6 +77,12 @@
         /// <param name="e">Argumentos del evento</param>
         protected void IngresarIntegrante(object sender, EventArgs e)
         {
+            if (!new GeneralBo().ValidarRut(tbRUT.Text.Trim() + tbDV.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", @"<script language='javascript' type='text/javascript'>alert('El RUT ingresado no es válido!');</script>", false);
+                return;
+            }
+
             string mensaje;
             var integrante = new INT_Integrantes
             {
@@ -114,6 +143,7 @@
                     tbNombres.Text = datos.Nombres;
                     tbApPaterno.Text = datos.ApPaterno;
                     tbApMaterno.Text = datos.ApMaterno;
+                    tbFechaNac.Text = datos.FechaNac.ToShortDateString();
                     rbgSexo.SelectedValue = datos.Sexo ? "1" : "0";
                     ddlParentesco.SelectedValue = datos.IdParentesco.ToString("D");
                     ddlEstadoCivil.SelectedValue = datos.IdEstadoCivil.ToString("D");
@@ -140,25 +170,39 @@
         }
 
         /// <summary>
-        /// Método que alterna la vista entre la lista y el formulario de ingreso.
+        /// Método que alterna entre las vistas.
         /// </summary>
         /// <param name="sender">Objeto del evento</param>
         /// <param name="e">Argumentos del evento</param>
         protected void MostrarIngresoIntegrante(object sender, EventArgs e)
         {
+            tblBuscarIntegrante.Visible = false;
             tblListaIntegrantes.Visible = false;
             tblIngresoIntegrante.Visible = true;
         }
 
         /// <summary>
-        /// Método que alterna la vista entre la lista y el formulario de ingreso.
+        /// Método que alterna entre las vistas.
         /// </summary>
         /// <param name="sender">Objeto del evento</param>
         /// <param name="e">Argumentos del evento</param>
         protected void MostrarListaIntegrantes(object sender, EventArgs e)
         {
+            tblBuscarIntegrante.Visible = false;
             tblIngresoIntegrante.Visible = false;
             tblListaIntegrantes.Visible = true;
+        }
+
+        /// <summary>
+        /// Método que alterna entre las vistas.
+        /// </summary>
+        /// <param name="sender">Objeto del evento</param>
+        /// <param name="e">Argumentos del evento</param>
+        protected void MostrarBuscarIntegrante(object sender, EventArgs e)
+        {
+            tblIngresoIntegrante.Visible = false;
+            tblListaIntegrantes.Visible = false;
+            tblBuscarIntegrante.Visible = true;
         }
 
         /// <summary>
@@ -168,6 +212,47 @@
         {
             gvIntegrantes.DataSource = new IntegrantesBo().ObtenerIntegrantes();
             gvIntegrantes.DataBind();
+        }
+
+        /// <summary>
+        /// Método que busca un registro por su RUT
+        /// </summary>
+        /// <param name="sender">Objeto del evento</param>
+        /// <param name="e">Argumentos del evento</param>
+        protected void BuscarPorRut(object sender, EventArgs e)
+        {
+            if (!new GeneralBo().ValidarRut(tbBuscaRUT.Text.Trim() + tbBuscaDV.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", @"<script language='javascript' type='text/javascript'>alert('El RUT ingresado no es válido!');</script>", false);
+                return;
+            }
+
+            var datos = new IntegrantesBo().ObtenerIntegrante(int.Parse(tbBuscaRUT.Text.Trim()));
+
+            if (string.IsNullOrEmpty(datos.Nombres))
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", @"<script language='javascript' type='text/javascript'>alert('No se encontraron registros!');</script>", false);
+                return;
+            }
+
+            LimpiarControles(null, null);
+            btnIngresar.CommandArgument = datos.RUT.ToString("D");
+            tbRUT.Enabled = false;
+            tbDV.Enabled = false;
+            tbRUT.Text = datos.RUT.ToString("D");
+            tbDV.Text = datos.DV;
+            tbNombres.Text = datos.Nombres;
+            tbApPaterno.Text = datos.ApPaterno;
+            tbApMaterno.Text = datos.ApMaterno;
+            tbFechaNac.Text = datos.FechaNac.ToShortDateString();
+            rbgSexo.SelectedValue = datos.Sexo ? "1" : "0";
+            ddlParentesco.SelectedValue = datos.IdParentesco.ToString("D");
+            ddlEstadoCivil.SelectedValue = datos.IdEstadoCivil.ToString("D");
+            ddlNivelEscolar.SelectedValue = datos.IdNivelEscolar.ToString("D");
+            ddlOcupacion.SelectedValue = datos.IdOcupacion.ToString("D");
+            tbDescOcupacion.Text = datos.DescOcupacion;
+            btnIngresar.Text = "Modificar";
+            MostrarIngresoIntegrante(null, null);
         }
     }
 }

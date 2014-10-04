@@ -60,6 +60,12 @@
         /// <param name="e">Argumentos del evento</param>
         protected void IngresarUsuario(object sender, EventArgs e)
         {
+            if (!new GeneralBo().ValidarRut(tbRUT.Text.Trim() + tbDV.Text))
+            {
+                ScriptManager.RegisterStartupScript(this, typeof(Page), "Mensaje", @"<script language='javascript' type='text/javascript'>alert('El RUT ingresado no es válido!');</script>", false);
+                return;
+            }
+
             string mensaje;
             var usuario = new GEN_Usuarios
             {

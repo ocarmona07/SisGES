@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Base.master.cs" Inherits="SisGES.Vista.Base" %>
+<%@ Register TagPrefix="act" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit, Version=4.1.7.1213, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
 
 <!DOCTYPE html>
 
@@ -49,7 +50,7 @@
     <div id="bodypat">
         <section id="container">
             <form id="frmMain" runat="server">
-                <asp:ScriptManager runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True" />
+                <act:ToolkitScriptManager ID="tkmDate" runat="server" EnableScriptGlobalization="True" EnableScriptLocalization="True" />
                 <!-- BEGIN HEADER -->
                 <header class="clearfix">
                     <!-- BEGIN LOGO -->

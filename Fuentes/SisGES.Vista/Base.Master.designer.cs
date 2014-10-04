@@ -40,6 +40,15 @@ namespace SisGES.Vista {
         protected global::System.Web.UI.HtmlControls.HtmlForm frmMain;
         
         /// <summary>
+        /// Control tkmDate.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::AjaxControlToolkit.ToolkitScriptManager tkmDate;
+        
+        /// <summary>
         /// Control logo.
         /// </summary>
         /// <remarks>

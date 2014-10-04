@@ -12,23 +12,22 @@
             <asp:TableRow>
                 <asp:TableCell runat="server" HorizontalAlign="Center" VerticalAlign="Middle">
                     <div id="bodypat">
-                        <div style="height: 15%"></div>
-                        <asp:Table runat="server" BackColor="black" Style="margin: 0 auto;">
+                        <asp:Table runat="server" BackColor="black" Style="margin: 0 auto; position: absolute; top: 20%; left: 35%;">
                             <asp:TableRow runat="server" Height="120px">
                                 <asp:TableCell runat="server" HorizontalAlign="Center" VerticalAlign="Bottom" Width="400px" ColumnSpan="2">
-                        <asp:Image runat="server" Height="100px" ImageUrl="~/images/logo.png"/>
+                                    <asp:Image runat="server" ImageUrl="~/images/logo.png"/>
                                 </asp:TableCell>
                             </asp:TableRow>
                             <asp:TableRow runat="server" Height="120px">
                                 <asp:TableCell runat="server" HorizontalAlign="Center" VerticalAlign="Top" Width="400px" ColumnSpan="2">
-                        <span id="sitename">SisGES</span>
+                                    <span id="sitename">SisGES</span>
                                 </asp:TableCell>
                             </asp:TableRow>
                             <asp:TableRow runat="server" Height="20px">
                                 <asp:TableCell runat="server" HorizontalAlign="Right" VerticalAlign="Top">
-                        <h5>
-                            <asp:Label runat="server" Text="RUT:" Style="padding-right: 5px;" />
-                        </h5>
+                                    <h5>
+                                        <asp:Label runat="server" Text="RUT:" Style="padding-right: 5px;" />
+                                    </h5>
                                 </asp:TableCell>
                                 <asp:TableCell runat="server" VerticalAlign="Middle" HorizontalAlign="Left">
                                     <p class="contact-form-sender">
@@ -38,9 +37,9 @@
                             </asp:TableRow>
                             <asp:TableRow runat="server" Height="20px">
                                 <asp:TableCell runat="server" HorizontalAlign="Right" VerticalAlign="Top">
-                        <h5>
-                            <asp:Label runat="server" Text="Contraseña:" Style="padding-right: 5px;" />                                
-                        </h5>
+                                    <h5>
+                                        <asp:Label runat="server" Text="Contraseña:" Style="padding-right: 5px;" />                                
+                                    </h5>
                                 </asp:TableCell>
                                 <asp:TableCell runat="server" VerticalAlign="Top" HorizontalAlign="Left">
                                     <p class="contact-form-sender">

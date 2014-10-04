@@ -73,7 +73,7 @@
                                     <asp:TableCell runat="server">
                                         <asp:TextBox runat="server" ID="tbRUT" Width="76px" MaxLength="8" />
                                         <span>- </span>
-                                        <asp:TextBox runat="server" ID="tbDV" Width="20px" MaxLength="1" Enabled="False" />
+                                        <asp:TextBox runat="server" ID="tbDV" Width="20px" MaxLength="1" />
                                     </asp:TableCell>
                                     <asp:TableCell runat="server" HorizontalAlign="Right">
                                         <asp:Label runat="server" Text="Rol:" Style="padding-right: 5px;" />
