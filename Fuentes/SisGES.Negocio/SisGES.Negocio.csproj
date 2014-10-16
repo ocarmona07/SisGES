@@ -43,6 +43,7 @@
     <Compile Include="GeneralBo.cs" />
     <Compile Include="GestoresFamiliaresBo.cs" />
     <Compile Include="EstadoCivilBo.cs" />
+    <Compile Include="FamiliasBo.cs" />
     <Compile Include="OcupacionBo.cs" />
     <Compile Include="NivelEscolarBo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

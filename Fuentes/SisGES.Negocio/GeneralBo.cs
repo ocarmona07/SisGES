@@ -1,6 +1,10 @@
-﻿namespace SisGES.Negocio
+﻿using System.Collections.Generic;
+using SisGES.Entidades;
+
+namespace SisGES.Negocio
 {
     using System;
+    using Datos;
 
     /// <summary>
     /// Clase de negocio para métodos de uso general
@@ -38,6 +42,27 @@
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Método que asocia un integrante a la familia
+        /// </summary>
+        /// <param name="idFamilia">Id Familia</param>
+        /// <param name="rutIntegrante">RUT Integrante</param>
+        /// <returns>Confirmación</returns>
+        public bool AgregarIntegrantesFamilia(int idFamilia, int rutIntegrante)
+        {
+            return new GeneralDa().AgregarIntegrantesFamilia(idFamilia, rutIntegrante);
+        }
+
+        /// <summary>
+        /// Método que obtiene los integrantes de una familia
+        /// </summary>
+        /// <param name="idFamilia">Id Familia</param>
+        /// <returns>Lista integrantes</returns>
+        public List<INT_Integrantes> ObtenerIntegrantesFamilia(int idFamilia)
+        {
+            return new GeneralDa().ObtenerIntegrantesFamilia(idFamilia);
         }
     }
 }

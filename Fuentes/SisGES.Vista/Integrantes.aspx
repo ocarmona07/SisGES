@@ -56,6 +56,8 @@
                                     <asp:BoundField HeaderText="Fecha Nac." DataField="FechaNac" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="100px" />
                                     <asp:TemplateField HeaderText="Acciones" HeaderStyle-Width="80px" ItemStyle-HorizontalAlign="Center">
                                         <ItemTemplate>
+                                            <asp:ImageButton runat="server" ID="ibDescargaPdf" ImageUrl="~/images/pdf.png" CommandName="DescargaPdf"
+                                                CommandArgument='<%# Eval("RUT")%>' ToolTip="Descargar PDF" />
                                             <asp:ImageButton runat="server" ID="ibEditar" ImageUrl="~/images/edit.png" CommandName="Editar"
                                                 CommandArgument='<%# Eval("RUT")%>' ToolTip="Editar" />
                                             <asp:ImageButton runat="server" ID="ibEliminar" ImageUrl="~/images/delete.png" CommandName="Eliminar"

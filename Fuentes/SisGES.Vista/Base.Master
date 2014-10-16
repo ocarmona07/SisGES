@@ -72,15 +72,17 @@
                                     <li><a href="../Integrantes.aspx" title="Integrantes">
                                         <span>Integrantes</span></a>
                                     </li>
+                                    <li><a href="../Familias.aspx" title="Familias">
+                                        <span>Familias</span></a>
+                                    </li>
                                 </ul>
                             </li>
                             <!-- Menu Item Ayudas Sociales
                             <li><a href="#" title="Ayudas Sociales"><span>Ayudas Sociales</span></a>
                                 <ul>
-                                    <li><a href="blogtile-large.html" title="Blog"><span>Tile - Large</span></a></li>
-                                    <li><a href="blogtile-medium.html" title="Blog"><span>Tile - Medium</span></a></li>
-                                    <li><a href="bloglist.html" title="Blog List"><span>Blog List</span></a></li>
-                                    <li><a href="singleblogpost-1.html" title="Article 1"><span>Single Post</span></a></li>
+                                    <li><a href="../AyudasSociales.aspx" title="Ayudas sociales">
+                                        <span>Ayudas Sociales</span></a>
+                                    </li>
                                 </ul>
                             </li> -->
                             <!-- Menu Item Administración -->

@@ -43,8 +43,7 @@ GO
 CREATE TABLE FAM_IntegrantesFamilia
     (
       IdFamilia INT NOT NULL ,
-      RUT INT NOT NULL ,
-      CONSTRAINT PK_FAM_INTEGRANTESFAMILIA PRIMARY KEY ( IdFamilia )
+      RUT INT NOT NULL
     )
 GO
 

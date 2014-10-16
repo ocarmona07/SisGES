@@ -3,6 +3,8 @@
     using System;
     using System.Web.UI;
     using System.Web.UI.WebControls;
+    using PdfSharp.Drawing;
+    using PdfSharp.Pdf;
     using Entidades;
     using Negocio;
 
@@ -88,9 +90,9 @@
             {
                 RUT = int.Parse(tbRUT.Text),
                 DV = tbDV.Text,
-                Nombres = tbNombres.Text,
-                ApPaterno = tbApPaterno.Text,
-                ApMaterno = tbApMaterno.Text,
+                Nombres = tbNombres.Text.Trim(),
+                ApPaterno = tbApPaterno.Text.Trim(),
+                ApMaterno = tbApMaterno.Text.Trim(),
                 IdParentesco = int.Parse(ddlParentesco.SelectedValue),
                 Sexo = "1".Equals(rbgSexo.SelectedValue),
                 FechaNac = DateTime.Parse(tbFechaNac.Text),
@@ -119,6 +121,7 @@
 
             LimpiarControles(null, null);
             CargarGrilla();
+            MostrarListaIntegrantes(null, null);
             if (Master != null) ((Label)Master.FindControl("lblMensaje")).Text = mensaje;
             ScriptManager.RegisterStartupScript(this, GetType(), "Javascript", "javascript: MostrarAlert();", true);
         }
@@ -132,6 +135,85 @@
         {
             switch (e.CommandName)
             {
+                case "DescargaPdf":
+                    var integrante = new IntegrantesBo().ObtenerIntegrante(int.Parse(e.CommandArgument.ToString()));
+
+                    var document = new PdfDocument();
+                    document.Info.Title = "Información Integrante: " + integrante.Nombres + " " + integrante.ApPaterno;
+                    document.Info.Author = "SisGES";
+                    document.Info.Subject = "Fecha Creación: " + document.Info.CreationDate.ToShortDateString();
+                    var pagina = document.AddPage();
+                    pagina.Width = XUnit.FromCentimeter(21.59);
+                    pagina.Height = XUnit.FromCentimeter(27.94);
+                    var gfx = XGraphics.FromPdfPage(pagina);
+                    const string nombreFuente = "Arial";
+                    var colorLetras = XBrushes.Black;
+
+                    var fuenteTitulo = new XFont(nombreFuente, 20, XFontStyle.Bold);
+                    var rectTitulo = new XRect(0, 0, pagina.Width, XUnit.FromCentimeter(12));
+                    gfx.DrawString("SisGES - Información del integrante", fuenteTitulo, colorLetras, rectTitulo, XStringFormats.Center);
+
+                    const double altoDatos = 9.5;
+                    var i = 0;
+                    var campos = new[]
+                    {
+                        "RUT:",
+                        "Nombre(s):",
+                        "Apellido(s):",
+                        "Fecha de Nac.:",
+                        "Sexo:",
+                        "Parentesco:",
+                        "Estado civil:",
+                        "Nivel Escolar:",
+                        "Ocupación:",
+                        "Detalle Ocupación:"
+                    };
+                    var fuenteDatos = new XFont(nombreFuente, 14, XFontStyle.Bold);
+                    foreach (var campo in campos)
+                    {
+                        var rectDatos = new XRect(XUnit.FromCentimeter(3.2), XUnit.FromCentimeter(altoDatos + i), 0, 0);
+                        gfx.DrawString(campo, fuenteDatos, colorLetras, rectDatos, XStringFormats.Default);
+                        i++;
+                    }
+
+                    i = 0;
+                    var datosCampos = new[]
+                    {
+                        integrante.RUT.ToString("N0") + "-" + integrante.DV,
+                        integrante.Nombres,
+                        integrante.ApPaterno + " " + integrante.ApMaterno,
+                        integrante.FechaNac.ToShortDateString(),
+                        integrante.Sexo ? "Masculino" : "Femenino",
+                        new ParentescosBo().ObtenerParentesco(integrante.IdParentesco).Parentesco,
+                        new EstadoCivilBo().ObtenerEstadoCivil(integrante.IdEstadoCivil).EstadoCivil,
+                        new NivelEscolarBo().ObtenerNivelEscolar(integrante.IdNivelEscolar).NivelEscolar,
+                        new OcupacionesBo().ObtenerOcupacion(integrante.IdOcupacion).Ocupacion,
+                        integrante.DescOcupacion
+                    };
+                    var fuenteDatosCampos = new XFont(nombreFuente, 14, XFontStyle.Regular);
+                    foreach (var datosCampo in datosCampos)
+                    {
+                        var rectDatos = new XRect(XUnit.FromCentimeter(9), XUnit.FromCentimeter(altoDatos + i), 0, 0);
+                        gfx.DrawString(datosCampo, fuenteDatosCampos, XBrushes.Black, rectDatos, XStringFormats.Default);
+                        i++;
+                    }
+
+                    var rectPie = new XRect(XUnit.FromCentimeter(11.5), XUnit.FromCentimeter(23), 0, 0);
+                    gfx.DrawString(DateTime.Today.ToLongDateString(), fuenteDatos, colorLetras, rectPie, XStringFormats.TopLeft);
+
+                    var nombreArchivo = "Integrante_" + integrante.RUT + "-" + integrante.DV;
+                    var stream = new System.IO.MemoryStream();
+                    document.Save(stream, false);
+                    Response.Clear();
+                    Response.ContentType = "application/pdf";
+                    Response.AddHeader("Content-Length", stream.Length.ToString("D"));
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + nombreArchivo + ".pdf");
+                    Response.BinaryWrite(stream.ToArray());
+                    Response.Flush();
+                    stream.Close();
+                    Response.End();
+                    break;
+
                 case "Editar":
                     LimpiarControles(null, null);
                     var datos = new IntegrantesBo().ObtenerIntegrante(int.Parse(e.CommandArgument.ToString()));

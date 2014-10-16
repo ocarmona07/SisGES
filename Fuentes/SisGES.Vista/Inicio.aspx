@@ -56,7 +56,7 @@
                         <img class="live-img" src="images/placeholder/medium_blank.png" alt="Article 2" />
                     </div>
                     <div class="live-back">
-                        <img class="live-img" src="images/placeholder/medium_blank.png" alt="Article 2" />
+                        <img class="live-img" src="images/placeholder/medium_blank_2.png" alt="Article 2" />
                     </div>
                     <span class="tile-date limetxt"><span class="date">27</span><span class="month">Octubre</span></span>
                     <span class="tile-cat lime">Reunión Fosis</span>
@@ -78,11 +78,10 @@
                         </div>
                     </div>
                     <div class="article-date limetxt"><span class="date">27</span><span class="month">Octubre</span></div>
-                    <h1 class="lb-title">This is the title of Article Two</h1>
-                    <span class="postcat limetxt">Cartoon Design</span>
+                    <h1 class="lb-title">Reunión en Fosis</h1>
+                    <span class="postcat limetxt">Asesoras Familiares</span>
                     <div class="lb-excerpt">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis sollicitudin aliquet. Nullam ut sapien eros, aliquet gravida turpis. Cras nec risus magna. Morbi laoreet molestie odio sed ultrices. Maecenas eget elit orci. Etiam rhoncus urna vitae neque accumsan et vehicula dolor varius. Praesent tellus velit.</p>
-                        <p><a class="exp-button" href="singleblogpost-1.html">Read More &#8594;</a></p>
+                        <p>Se cita a reunión en las oficinas del fosis a todo el personal de asesoras familiares.</p>
                     </div>
                 </article>
             </div>

@@ -75,7 +75,7 @@
             var listaRetorno = new List<FAM_Familias>();
             try
             {
-                listaRetorno = _sisGESEntities.FAM_Familias.ToList();
+                listaRetorno = _sisGESEntities.FAM_Familias.Include("GEN_GestoresFamiliares").ToList();
                 _sisGESEntities.Dispose();
                 return listaRetorno;
             }
